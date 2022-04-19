@@ -1,0 +1,98 @@
+Proiect ITFactory
+Introducere in programare Java si OOP
+
+Enunt general: Sa se creeze un proiect ce consista intr-o aplicatie Java care simuleaza
+inrolarea persoanelor pentru cursuri de programare. In vederea functionalitatilor se vor avea
+in vedere urmatoarele:
+• Utilizatorul va interactiona cu aplicatia gestionand cursurile care se predau si
+cursantii care sunt inrolati in aceste cursuri.
+• In cadrul companiei ITFactory pot exista o serie de cursuri (De exemplu. Curs de java,
+curs de python, curs de javascript, curs de testare manuala, curs de testare
+automata.. etc). Nu este o limita pentru numarul de cursuri.
+• Fiecare curs va avea un pret stabilit pe care cursantii trebuie sa il achite pentru a
+intra in curs.
+• Pentru fiecare curs va exista o limita de 7 persoane care pot intra intr-un singur curs.
+(daca se incearca inrolarea unei personae la un curs unde sunt deja 7 persoane, acea
+persoana va trebui sa intre pe o lista de asteptare).
+
+Partea 1.
+• Sa se creeze un proiect de tip maven cu numele (GestiuneCursuri) cu urmatoarele
+configurari simple:
+  -> Name: GestiuneCursuri
+  -> GroupId: com.itfactory
+• Se se creeze un pachet cu numele “model” unde se vor plasa clasele ce contin date
+precum cursanti, cursuri etc. Atentie la metodele equals si hashCode.
+• Clasa Course se vor adauga urmatoarele fielduri:
+o courseId (int) – Id-ul cursului
+o courseName (String) – Numele cursului
+o price (double) – Pretul cursului.
+Pentru clasa Course se va creea un Constructor cu urmatorii parametri: courseId,
+courseName si price.
+• Clasa Student
+o studentId (int) – ID-ul studentului
+o studentName (String) - Numele cursantului
+o budget (double) – Bugetul de care dispune studentul
+Pentru clasa Student se va creea un constructor cu toti parametrii de mai sus.
+
+• Sa se creeze un pachet numit “utils” (Urmariti structura de mai jos)
+o Clasa Utils
+§ Va contine metode statice utilitare (Metode ce vor fi apelate prin
+intermediul clasei.
+§ Se va crea o metoda care citeste de la tastatura datele unui curs
+§ Se va crea o metoda care citeste de la tastatura datele unui cursant.
+
+CLASA MAIN: Se cer urmatoarele cerinte:
+Se va crea un Map in care cheile vor fi de tip Course iar valorile for fie de tip List<Student>
+Map<Course, List<Student>> data;
+
+La startarea programului se va afisa un mesaj de inceput (o lista de optiuni pe care poate sa
+le introduca userul):
+
+Puteti introduce urmatoarele optiuni:
+0 – Ies din program.
+1 – Afiseaza cursuri
+2 – Introduceti un curs nou
+
+Dupa citirea unei optiuni se va decide actiunea folosind un switch
+Exemplu:
+System.out.print(“Introduceti optiunea”)
+Int optiune = Integer.parseInt(scanner.readLine());
+switch(optiune) {
+case 0: System.exit(0);
+break;
+……..
+
+Pentru optiuni.
+• Pentru optiunea 0
+o System.exit(0)
+• Pentru optiunea 1- Se va creea o metoda statica in clasa Main care afiseaza cursurile.
+• Pentru optiunea 2
+       o Se va folosi metoda din Utils pentru a citi datele unui curs
+       o Se va introduce cursul in Map-ul creat iar pentru valori initial se va introduce o
+lista goala: data.put(curs, new ArrayList());
+
+Se va creea o bucla while(true) pentru a instantia o aplicatie interactive unde user-ul va
+putea introduce optiuni. Optiuni precum 0,1,2 in care userul poate sa execute o actiune.
+
+Exemplu de consola interactiva:
+ Scanner scanner = new Scanner(System.in);
+ while (true)
+ {
+ System.out.print("Introduceti optiunea: ");
+ int option = Integer.parseInt(scanner.nextLine());
+ switch (option)
+ {
+ case 0:
+ System.exit(0);
+ break;
+ case 1:
+ //afiseaza cursurile
+ break;
+ case 2:
+ //introdu un curs nou
+ break;
+ default:
+ {
+ System.out.println("Optiunea introdusa nu exista");
+ }
+ }
